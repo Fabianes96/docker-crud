@@ -1,0 +1,56 @@
+<%- include('partials/header')%>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/agregar" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido" placeholder="Apellido" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email" placeholder="Email" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Aceptar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>  
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                    </tr>
+                    <tbody>
+                        <% for(var i=0;i < clients.length;i++){ %>
+                            <tr>
+                                <td><%= i +1%></td>
+                                <td><%= clients[i].nombre%></td>
+                                <td><%= clients[i].email%></td>
+                                <td>
+                                    
+                                    <a href="/eliminar/<%= clients[i]._id%>"class="btn btn-danger">Eliminar</a>
+                                    <a href="/editar/<%= clients[i]._id%>"class="btn btn-info">Actualizar</a>
+                                </td>
+                            </tr>
+                        <% } %>                        
+                    </tbody>
+                </thead>
+            </table>
+    
+        </div>      
+    </div>
+    
+   
+</div>
+<%- include('partials/footer')%>

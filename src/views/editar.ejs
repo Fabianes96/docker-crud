@@ -1,0 +1,28 @@
+<%- include('partials/header'); %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/editar/<%= r_client._id%>?_method=PUT" method="POST">
+                            
+                            <div class="form-group">
+                                <input type="text" name="nombre" placeholder="Nombre" class="form-control" value="<%=r_client.nombre%>">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="apellido" placeholder="Apellido" class="form-control" value="<%=r_client.apellido%>">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="email" placeholder="Email" class="form-control" value="<%=r_client.email%>">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Actualizar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer'); %>
