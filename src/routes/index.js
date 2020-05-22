@@ -14,7 +14,8 @@ router.get('/', async (req,res)=>{
 router.post('/agregar',async(req,res)=>{
     const client =new Client(req.body);
     await client.save();
-    res.redirect('/');
+    res.status(200).send(res.redirect("/"))
+    
 })
 
 router.delete('/eliminar/:id',async(req,res)=>{
@@ -24,7 +25,7 @@ router.delete('/eliminar/:id',async(req,res)=>{
         if (!removido) return res.status(404).send("No se puede eliminar este cliente");
         
     });
-    res.redirect('/')   
+    res.status(200).send(res.redirect("/"))
     
 })
 router.get('/edit/:id',async (req,res)=>{
@@ -42,7 +43,8 @@ router.put('/editar/:id',async (req,res)=>{
         if(!editado) return res.status(404).send({ message: "No existe el cliente" })
         const {id} = req.params;
     });
-    res.redirect('/');    
+    
+    res.status(200).send(res.redirect("/"))
 })
 
 module.exports = router;
